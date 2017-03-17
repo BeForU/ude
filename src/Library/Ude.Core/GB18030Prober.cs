@@ -61,7 +61,11 @@ namespace Ude.Core
         {
             return "gb18030";        
         }
-        
+
+        public override int GetCodePage()
+        {
+            return 54936;
+        }
 
         public override ProbingState HandleData(byte[] buf, int offset, int len)
         {

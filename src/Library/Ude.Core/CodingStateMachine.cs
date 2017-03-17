@@ -88,5 +88,10 @@ namespace Ude.Core
         { 
             get { return model.Name; } 
         }
+
+        public int ModelCodePage
+        {
+            get { return model.CodePage; }
+        }
     }
 }

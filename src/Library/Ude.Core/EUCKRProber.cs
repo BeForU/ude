@@ -56,7 +56,12 @@ namespace Ude.Core
         {
             return "EUC-KR";        
         }
-        
+
+        public override int GetCodePage()
+        {
+            return 51949;
+        }
+
         public override ProbingState HandleData(byte[] buf, int offset, int len)
         {
             int codingState;

@@ -98,7 +98,13 @@ namespace Ude.Core
         {
             return "Big-5";        
         }
-        
+
+        public override int GetCodePage()
+        {
+            return 950;
+        }
+
+
         public override float GetConfidence()
         {
             return distributionAnalyser.GetConfidence();

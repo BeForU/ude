@@ -207,7 +207,7 @@ namespace Ude.Core
 
         public ThaiModel(byte[] charToOrderMap, string name) 
             : base(TIS620_CHAR_TO_ORDER_MAP, THAI_LANG_MODEL, 
-                   0.926386f, false, "TIS-620")
+                   0.926386f, false, "TIS-620", 874)
         {
         }        
     }

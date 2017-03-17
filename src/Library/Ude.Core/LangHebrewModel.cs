@@ -179,8 +179,8 @@ namespace Ude.Core
             0,0,0,0,0,0,0,0,0,0,1,2,1,0,0,0,0,0,1,1,1,1,1,0,1,0,0,0,1,1,0,0,
         };
 
-        public HebrewModel(byte[] charToOrderMap, string name) 
-            : base(charToOrderMap, HEBREW_LANG_MODEL, 0.984004f, false, name)
+        public HebrewModel(byte[] charToOrderMap, string name, int codePage) 
+            : base(charToOrderMap, HEBREW_LANG_MODEL, 0.984004f, false, name, codePage)
         {
         }        
     }
@@ -214,7 +214,7 @@ namespace Ude.Core
              12, 19, 13, 26, 18, 27, 21, 17,  7, 10,  5,251,252,128, 96,253,
         };
         
-        public Win1255Model() : base(WIN1255_CHAR_TO_ORDER_MAP, "windows-1255")
+        public Win1255Model() : base(WIN1255_CHAR_TO_ORDER_MAP, "windows-1255", 1255)
         {
         }
     }

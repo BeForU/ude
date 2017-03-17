@@ -119,7 +119,7 @@ namespace Ude.Core
                          BitPackage.SHIFT_MASK_4BITS, 
                          BitPackage.BIT_SHIFT_4BITS,
                          BitPackage.UNIT_MASK_4BITS, UTF8_st),
-              UTF8CharLenTable, "UTF-8")
+              UTF8CharLenTable, "UTF-8", 65001)
         {
 
         }
@@ -188,7 +188,7 @@ namespace Ude.Core
                          BitPackage.SHIFT_MASK_4BITS, 
                          BitPackage.BIT_SHIFT_4BITS,
                          BitPackage.UNIT_MASK_4BITS, GB18030_st),
-              GB18030CharLenTable, "GB18030")
+              GB18030CharLenTable, "GB18030", 54936)
         {
 
         }
@@ -249,7 +249,7 @@ namespace Ude.Core
                          BitPackage.SHIFT_MASK_4BITS, 
                          BitPackage.BIT_SHIFT_4BITS,
                          BitPackage.UNIT_MASK_4BITS, BIG5_st),
-              BIG5CharLenTable, "Big5")
+              BIG5CharLenTable, "Big5", 950)
         {
 
         }
@@ -313,7 +313,7 @@ namespace Ude.Core
                          BitPackage.SHIFT_MASK_4BITS, 
                          BitPackage.BIT_SHIFT_4BITS,
                          BitPackage.UNIT_MASK_4BITS, EUCJP_st),
-              EUCJPCharLenTable, "EUC-JP")
+              EUCJPCharLenTable, "EUC-JP", 51932)
         {
 
         }
@@ -374,7 +374,7 @@ namespace Ude.Core
                          BitPackage.SHIFT_MASK_4BITS, 
                          BitPackage.BIT_SHIFT_4BITS,
                          BitPackage.UNIT_MASK_4BITS, EUCKR_st),
-              EUCKRCharLenTable, "EUC-KR")
+              EUCKRCharLenTable, "EUC-KR", 51949)
         {
 
         }
@@ -438,7 +438,7 @@ namespace Ude.Core
                          BitPackage.SHIFT_MASK_4BITS, 
                          BitPackage.BIT_SHIFT_4BITS,
                          BitPackage.UNIT_MASK_4BITS, EUCTW_st),
-              EUCTWCharLenTable, "EUC-TW")
+              EUCTWCharLenTable, "EUC-TW", 51936)
         {
 
         }
@@ -502,7 +502,7 @@ namespace Ude.Core
                          BitPackage.SHIFT_MASK_4BITS, 
                          BitPackage.BIT_SHIFT_4BITS,
                          BitPackage.UNIT_MASK_4BITS, SJIS_st),
-              SJISCharLenTable, "Shift_JIS")
+              SJISCharLenTable, "Shift_JIS", 932)
         {
 
         }
@@ -567,7 +567,7 @@ namespace Ude.Core
                          BitPackage.SHIFT_MASK_4BITS, 
                          BitPackage.BIT_SHIFT_4BITS,
                          BitPackage.UNIT_MASK_4BITS, UCS2BE_st),
-              UCS2BECharLenTable, "UTF-16BE")
+              UCS2BECharLenTable, "UTF-16BE", 1201)
         {
 
         }
@@ -632,7 +632,7 @@ namespace Ude.Core
                          BitPackage.SHIFT_MASK_4BITS, 
                          BitPackage.BIT_SHIFT_4BITS,
                          BitPackage.UNIT_MASK_4BITS, UCS2LE_st),
-              UCS2LECharLenTable, "UTF-16LE")
+              UCS2LECharLenTable, "UTF-16LE", 1200)
         {
 
         }

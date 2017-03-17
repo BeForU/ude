@@ -81,7 +81,9 @@ namespace Ude.Core
         public abstract void Reset();
 
         public abstract string GetCharsetName();
-        
+
+        public abstract int GetCodePage();
+
         public abstract float GetConfidence();
         
         public virtual ProbingState GetState()

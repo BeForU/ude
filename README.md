@@ -25,7 +25,7 @@ Ude can recognize the following charsets:
 * ASCII
 
 ## Platform
-Windows and Linux (Mono)
+Windows and Linux, Unity Engine (Mono)
 
 ## Install
 The release consists in the main library (*Ude.dll*) and a command-line client (*udetect.exe*) that can be used for one-shot tests.
@@ -50,6 +50,8 @@ This will installs a command-line example program (*$prefix/bin/udetect*) to tes
 To run the nunit tests type:
 
     $ make test
+### Unity Engine
+Build the project and pick Ude.dll into Assets\Plugins folder.
 
 ## Usage
 ### Example
@@ -61,13 +63,39 @@ To run the nunit tests type:
             cdet.Feed(fs);
             cdet.DataEnd();
             if (cdet.Charset != null) {
-                Console.WriteLine("Charset: {0}, confidence: {1}", 
-                     cdet.Charset, cdet.Confidence);
+                Console.WriteLine("Charset: {0}, CodePage: {1}, confidence: {2}", 
+                     cdet.Charset, cdet.CodePage, cdet.Confidence);
             } else {
                 Console.WriteLine("Detection failed.");
             }
         }
     }    
+#### Unity Engine
+    public void Start()
+    {
+        string filename = "sample.txt";
+        System.Text.Encoding enc = System.Text.Encoding.Default;
+        
+        using (FileStream fs = File.OpenRead(filename)) {
+            Ude.CharsetDetector cdet = new Ude.CharsetDetector();
+            cdet.Feed(fs);
+            cdet.DataEnd();
+            if (cdet.Charset != null) {
+                    System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                    sb.Append("Charset: ");
+                    sb.Append(cdet.Charset);
+                    sb.Append(", CodePage: ");
+                    sb.Append(cdet.CodePage);
+                    sb.Append(", Confidence: ");
+                    sb.Append(cdet.Confidence);
+
+                    Debug.Log(sb.ToString());
+                    enc = System.Text.Encoding.GetEncoding(cdet.CodePage);
+            } else {
+                Console.WriteLine("Detection failed.");
+            }
+        }
+    }  
 
 ## Other portings
 The original Mozilla Universal Charset Detector has been ported to a variety of languages. Among these, a Java port:
@@ -76,10 +104,8 @@ The original Mozilla Universal Charset Detector has been ported to a variety of 
 
 from which I copied a few data structures, and a Python port:
 
-* [chardet](http://chardet.feedparser.org/)
+* chardet
 
 ## License
 
-The library is subject to the Mozilla Public License Version 1.1 (the "License"). Alternatively, it may be used under the terms of either the GNU General Public License Version 2 or later (the "GPL"), or the GNU Lesser General Public License Version 2.1 or later (the "LGPL").
-
-Test data has been extracted from [Wikipedia](http://wikipedia.org) and [The Project Gutenberg](http://www.gutenberg.org/) books and is subject to their licenses.
+The library is subject to the Mozilla Public License Version 1.1 (the "License").

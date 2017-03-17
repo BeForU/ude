@@ -180,8 +180,8 @@ namespace Ude.Core
             
         };
 
-        public BulgarianModel(byte[] charToOrderMap, string name) 
-            : base(charToOrderMap, BULGARIAN_LANG_MODEL, 0.969392f, false, name)
+        public BulgarianModel(byte[] charToOrderMap, string name, int codePage) 
+            : base(charToOrderMap, BULGARIAN_LANG_MODEL, 0.969392f, false, name, codePage)
         {
         }        
     }
@@ -214,7 +214,7 @@ namespace Ude.Core
              62,242,243,244, 58,245, 98,246,247,248,249,250,251, 91,252,253,  //f0 
         };
         
-        public Latin5BulgarianModel() : base(LATIN5_CHAR_TO_ORDER_MAP, "ISO-8859-5")
+        public Latin5BulgarianModel() : base(LATIN5_CHAR_TO_ORDER_MAP, "ISO-8859-5", 28595)
         {
         }
     }
@@ -240,7 +240,7 @@ namespace Ude.Core
               7,  8,  5, 19, 29, 25, 22, 21, 27, 24, 17, 75, 52,253, 42, 16,  //f0
         };    
         
-        public Win1251BulgarianModel() : base(WIN1251__CHAR_TO_ORDER_MAP, "windows-1251")
+        public Win1251BulgarianModel() : base(WIN1251__CHAR_TO_ORDER_MAP, "windows-1251", 1251)
         {
         }
     }

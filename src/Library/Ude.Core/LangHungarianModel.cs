@@ -178,9 +178,9 @@ namespace Ude.Core
             0,1,1,1,1,1,1,0,1,1,0,1,0,1,0,0,1,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,
         };
 
-        public HungarianModel(byte[] charToOrderMap, string name) 
+        public HungarianModel(byte[] charToOrderMap, string name, int codePage) 
             : base(charToOrderMap, HUNGARIAN_LANG_MODEL, 0.947368f, 
-                   false, name)
+                   false, name, codePage)
         {
         }        
     }
@@ -206,7 +206,7 @@ namespace Ude.Core
             245,246,247, 25, 73, 42, 24,248,249,250, 31, 56, 29,251,252,253,
         };
         
-        public Latin2HungarianModel() : base(LATIN2_CHAR_TO_ORDER_MAP, "ISO-8859-2")
+        public Latin2HungarianModel() : base(LATIN2_CHAR_TO_ORDER_MAP, "ISO-8859-2", 28592)
         {
         }
     }
@@ -232,7 +232,7 @@ namespace Ude.Core
             245,246,247, 25, 74, 42, 24,248,249,250, 31, 56, 29,251,252,253,
         };
         
-        public Win1250HungarianModel() : base(WIN1250_CHAR_TO_ORDER_MAP, "windows-1250")
+        public Win1250HungarianModel() : base(WIN1250_CHAR_TO_ORDER_MAP, "windows-1250", 1250)
         {
         }
     }

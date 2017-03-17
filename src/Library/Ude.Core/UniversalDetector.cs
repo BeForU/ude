@@ -37,6 +37,7 @@
  * ***** END LICENSE BLOCK ***** */
 
 using System;
+using System.Text;
 
 namespace Ude.Core
 {
@@ -71,6 +72,7 @@ namespace Ude.Core
         protected CharsetProber[] charsetProbers = new CharsetProber[PROBERS_NUM];
         protected CharsetProber escCharsetProber;
         protected string detectedCharset;
+        protected int detectedCodePage;
 
         public UniversalDetector(int languageFilter) { 
             this.start = true;
@@ -95,29 +97,50 @@ namespace Ude.Core
                 if (len > 3) {
                     switch (buf[0]) {
                     case 0xEF:
-                        if (0xBB == buf[1] && 0xBF == buf[2])
-                            detectedCharset = "UTF-8";
+                            if (0xBB == buf[1] && 0xBF == buf[2])
+                            {
+                                detectedCharset = "UTF-8";
+                                detectedCodePage = 65001;
+                            }
                         break;
                     case 0xFE:
-                        if (0xFF == buf[1] && 0x00 == buf[2] && 0x00 == buf[3])
-                            // FE FF 00 00  UCS-4, unusual octet order BOM (3412)
-                            detectedCharset = "X-ISO-10646-UCS-4-3412";
-                        else if (0xFF == buf[1])
-                            detectedCharset = "UTF-16BE";
-                        break;
+                            if (0xFF == buf[1] && 0x00 == buf[2] && 0x00 == buf[3])
+                            {
+                                // FE FF 00 00  UCS-4, unusual octet order BOM (3412)
+                                detectedCharset = "X-ISO-10646-UCS-4-3412";
+                                detectedCodePage = 12001;
+                            }
+                            else if (0xFF == buf[1])
+                            {
+                                detectedCharset = "UTF-16BE";
+                                detectedCodePage = 1201;
+                            }
+                            break;
                     case 0x00:
-                        if (0x00 == buf[1] && 0xFE == buf[2] && 0xFF == buf[3])
-                            detectedCharset = "UTF-32BE";
-                        else if (0x00 == buf[1] && 0xFF == buf[2] && 0xFE == buf[3])
-                            // 00 00 FF FE  UCS-4, unusual octet order BOM (2143)
-                            detectedCharset = "X-ISO-10646-UCS-4-2143";
-                        break;
+                            if (0x00 == buf[1] && 0xFE == buf[2] && 0xFF == buf[3])
+                            {
+                                detectedCharset = "UTF-32BE";
+                                detectedCodePage = 12001;
+                            }
+                            else if (0x00 == buf[1] && 0xFF == buf[2] && 0xFE == buf[3])
+                            {
+                                // 00 00 FF FE  UCS-4, unusual octet order BOM (2143)
+                                detectedCharset = "X-ISO-10646-UCS-4-2143";
+                                detectedCodePage = 12000;
+                            }
+                            break;
                     case 0xFF:
-                        if (0xFE == buf[1] && 0x00 == buf[2] && 0x00 == buf[3])
-                            detectedCharset = "UTF-32LE";
-                        else if (0xFE == buf[1])
-                            detectedCharset = "UTF-16LE";
-                        break;
+                            if (0xFE == buf[1] && 0x00 == buf[2] && 0x00 == buf[3])
+                            {
+                                detectedCharset = "UTF-32LE";
+                                detectedCodePage = 12000;
+                            }
+                            else if (0xFE == buf[1])
+                            {
+                                detectedCharset = "UTF-16LE";
+                                detectedCodePage = 1200;
+                            }
+                            break;
                     }  // switch
                 }
                 if (detectedCharset != null) {
@@ -168,6 +191,7 @@ namespace Ude.Core
                     if (st == ProbingState.FoundIt) {
                         done = true;
                         detectedCharset = escCharsetProber.GetCharsetName();
+                        detectedCodePage = escCharsetProber.GetCodePage();
                     }
                     break;
                 case InputState.Highbyte:
@@ -180,6 +204,7 @@ namespace Ude.Core
                             if (st == ProbingState.FoundIt) {
                                 done = true;
                                 detectedCharset = charsetProbers[i].GetCharsetName();
+                                detectedCodePage = charsetProbers[i].GetCodePage();
                                 return;
                             }  
                         }
@@ -206,7 +231,7 @@ namespace Ude.Core
 
             if (detectedCharset != null) {
                 done = true;
-                Report(detectedCharset, 1.0f);
+                Report(detectedCharset, detectedCodePage, 1.0f);
                 return;
             } 
 
@@ -225,11 +250,13 @@ namespace Ude.Core
                 }
                 
                 if (maxProberConfidence > MINIMUM_THRESHOLD) {
-                    Report(charsetProbers[maxProber].GetCharsetName(), maxProberConfidence);
+                    Report(charsetProbers[maxProber].GetCharsetName(),
+                        charsetProbers[maxProber].GetCodePage(),
+                        maxProberConfidence);
                 } 
                 
             } else if (inputState == InputState.PureASCII) {
-                Report("ASCII", 1.0f);
+                Report("ASCII", 0, 1.0f);
             } 
         }
 
@@ -253,7 +280,7 @@ namespace Ude.Core
                     charsetProbers[i].Reset();
         }
         
-        protected abstract void Report(string charset, float confidence);
+        protected abstract void Report(string charset, int codePage, float confidence);
 
     }
 }

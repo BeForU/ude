@@ -179,8 +179,8 @@ namespace Ude.Core
         0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
         };
 
-        public GreekModel(byte[] charToOrderMap, string name) 
-            : base(charToOrderMap, GREEK_LANG_MODEL, 0.982851f, false, name)
+        public GreekModel(byte[] charToOrderMap, string name, int codePage) 
+            : base(charToOrderMap, GREEK_LANG_MODEL, 0.982851f, false, name, codePage)
         {
         }        
     }
@@ -213,7 +213,7 @@ namespace Ude.Core
               9,  8, 14,  7,  2, 12, 28, 23, 42, 24, 64, 75, 19, 26, 27,253,  //f0
         };
         
-        public Latin7Model() : base(LATIN7_CHAR_TO_ORDER_MAP, "ISO-8859-7")
+        public Latin7Model() : base(LATIN7_CHAR_TO_ORDER_MAP, "ISO-8859-7", 28597)
         {
         }
     }
@@ -239,7 +239,7 @@ namespace Ude.Core
               9,  8, 14,  7,  2, 12, 28, 23, 42, 24, 64, 75, 19, 26, 27,253,  //f0
         };    
         
-        public Win1253Model() : base(WIN1253__CHAR_TO_ORDER_MAP, "windows-1253")
+        public Win1253Model() : base(WIN1253__CHAR_TO_ORDER_MAP, "windows-1253", 1253)
         {
         }
     }

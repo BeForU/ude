@@ -168,6 +168,11 @@ namespace Ude.Core
             return (nameProber == null) ? model.CharsetName
                                         : nameProber.GetCharsetName();
         }
-        
+
+        public override int GetCodePage()
+        {
+            return (nameProber == null) ? model.CodePageNumber
+                                        : nameProber.GetCodePage();
+        }
     }
 }

@@ -68,19 +68,28 @@ namespace Ude.Core
         public string CharsetName {
             get { return charsetName; }
         }
-        
+
+        protected int codePageNumber;
+
+        public int CodePageNumber
+        {
+            get { return codePageNumber; }
+        }
+
         public SequenceModel(
                 byte[] charToOrderMap,
                 byte[] precedenceMatrix,
                 float typicalPositiveRatio,
                 bool keepEnglishLetter,
-                String charsetName)
+                String charsetName,
+                int codePageNumber)
         {
             this.charToOrderMap = charToOrderMap;
             this.precedenceMatrix = precedenceMatrix;
             this.typicalPositiveRatio = typicalPositiveRatio;
             this.keepEnglishLetter = keepEnglishLetter;
             this.charsetName = charsetName;
+            this.codePageNumber = codePageNumber;
         }
         
         public byte GetOrder(byte b)

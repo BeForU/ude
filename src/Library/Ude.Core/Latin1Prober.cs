@@ -121,7 +121,12 @@ namespace Ude.Core
         {
             return "windows-1252";
         }
-        
+
+        public override int GetCodePage()
+        {
+            return 1252;
+        }
+
         public override void Reset()
         {
             state = ProbingState.Detecting;

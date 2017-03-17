@@ -45,6 +45,7 @@ namespace Ude.Core
     {
         private const int CHARSETS_NUM = 4;
         private string detectedCharset;
+        private int detectedCodePage;
         private CodingStateMachine[] codingSM; 
         int activeSM;
 
@@ -89,6 +90,7 @@ namespace Ude.Core
                     } else if (codingState == SMModel.ITSME) {
                         state = ProbingState.FoundIt;
                         detectedCharset = codingSM[j].ModelName;
+                        detectedCodePage = codingSM[j].ModelCodePage;
                         return state;
                     }
                 }
@@ -100,7 +102,12 @@ namespace Ude.Core
         {
             return detectedCharset;        
         }
-        
+
+        public override int GetCodePage()
+        {
+            return detectedCodePage;
+        }
+
         public override float GetConfidence()
         {
             return 0.99f;

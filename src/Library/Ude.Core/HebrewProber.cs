@@ -273,6 +273,30 @@ namespace Ude.Core
             return LOGICAL_HEBREW_NAME;
         }
 
+        public override int GetCodePage()
+        {
+            // If the final letter score distance is dominant enough, rely on it.
+            int finalsub = finalCharLogicalScore - finalCharVisualScore;
+            if (finalsub >= MIN_FINAL_CHAR_DISTANCE)
+                return 1255;
+            if (finalsub <= -(MIN_FINAL_CHAR_DISTANCE))
+                return 28598;
+
+            // It's not dominant enough, try to rely on the model scores instead.
+            float modelsub = logicalProber.GetConfidence() - visualProber.GetConfidence();
+            if (modelsub > MIN_MODEL_DISTANCE)
+                return 1255;
+            if (modelsub < -(MIN_MODEL_DISTANCE))
+                return 28598;
+
+            // Still no good, back to final letter distance, maybe it'll save the day.
+            if (finalsub < 0)
+                return 28598;
+
+            // (finalsub > 0 - Logical) or (don't know what to do) default to Logical.
+            return 1255;
+        }
+
         public override void Reset()
         {
             finalCharLogicalScore = 0;

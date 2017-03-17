@@ -179,8 +179,8 @@ namespace Ude.Core
             0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,
         };
         
-        public CyrillicModel(byte[] charToOrderMap, string name) 
-            : base(charToOrderMap, RUSSIAN_LANG_MODEL, 0.976601f, false, name)
+        public CyrillicModel(byte[] charToOrderMap, string name, int codePage) 
+            : base(charToOrderMap, RUSSIAN_LANG_MODEL, 0.976601f, false, name, codePage)
         {
         }
     }
@@ -206,7 +206,7 @@ namespace Ude.Core
          35, 43, 45, 32, 40, 52, 56, 33, 61, 62, 51, 57, 47, 63, 50, 70,  //f0
         };
         
-        public Koi8rModel() : base(KOI8R_CHAR_TO_ORDER_MAP, "KOI8-R")
+        public Koi8rModel() : base(KOI8R_CHAR_TO_ORDER_MAP, "KOI8-R", 20866)
         {
         }
     }
@@ -232,7 +232,7 @@ namespace Ude.Core
           9,  7,  6, 14, 39, 26, 28, 22, 25, 29, 54, 18, 17, 30, 27, 16,
         };
         
-        public Win1251Model() : base(WIN1251_CHAR_TO_ORDER_MAP, "windows-1251")
+        public Win1251Model() : base(WIN1251_CHAR_TO_ORDER_MAP, "windows-1251", 1251)
         {
         }
     }
@@ -258,7 +258,7 @@ namespace Ude.Core
             239, 68,240,241,242,243,244,245,246,247,248,249,250,251,252,255,
             };      
         
-        public Latin5Model() : base(LATIN5_CHAR_TO_ORDER_MAP, "ISO-8859-5")
+        public Latin5Model() : base(LATIN5_CHAR_TO_ORDER_MAP, "ISO-8859-5", 28595)
         {
         }
     }
@@ -285,7 +285,7 @@ namespace Ude.Core
         };
         
         public MacCyrillicModel() : base(MACCYRILLIC_CHAR_TO_ORDER_MAP,
-                                        "x-mac-cyrillic")
+                                        "x-mac-cyrillic", 10007)
         {
         }
     }
@@ -311,7 +311,7 @@ namespace Ude.Core
         250, 18, 62, 20, 51, 25, 57, 30, 47, 29, 63, 22, 50,251,252,255,
         };
                 
-        public Ibm855Model() : base(IBM855_BYTE_TO_ORDER_MAP, "IBM855")
+        public Ibm855Model() : base(IBM855_BYTE_TO_ORDER_MAP, "IBM855", 855)
         {
         }
     }
@@ -337,7 +337,7 @@ namespace Ude.Core
         239, 68,240,241,242,243,244,245,246,247,248,249,250,251,252,255,
         };
         
-        public Ibm866Model() : base(IBM866_CHAR_TO_ORDER_MAP, "IBM866")
+        public Ibm866Model() : base(IBM866_CHAR_TO_ORDER_MAP, "IBM866", 866)
         {
         }
     }

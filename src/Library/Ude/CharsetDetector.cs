@@ -72,7 +72,9 @@ namespace Ude
     public class CharsetDetector : UniversalDetector, ICharsetDetector
     {
         private string charset;
-        
+
+        private int codePage;
+
         private float confidence;
         
         //public event DetectorFinished Finished;
@@ -108,13 +110,18 @@ namespace Ude
             get { return charset; }
         }
 
+        public int CodePage {
+            get { return codePage; }
+        }
+
         public float Confidence {
             get { return confidence; }
         }
         
-        protected override void Report(string charset, float confidence)
+        protected override void Report(string charset, int codePage, float confidence)
         {
             this.charset = charset;
+            this.codePage = codePage;
             this.confidence = confidence;
 //            if (Finished != null) {
 //                Finished(charset, confidence);

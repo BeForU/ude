@@ -177,5 +177,17 @@ namespace Ude.Core
             return probers[bestGuess].GetCharsetName();
         }
 
+        public override int GetCodePage()
+        {
+            //if we have no answer yet
+            if (bestGuess == -1)
+            {
+                GetConfidence();
+                //no charset seems positive
+                if (bestGuess == -1)
+                    bestGuess = 0;
+            }
+            return probers[bestGuess].GetCodePage();
+        }
     }
 }

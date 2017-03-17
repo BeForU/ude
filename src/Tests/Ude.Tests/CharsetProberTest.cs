@@ -47,6 +47,7 @@ namespace Ude.Tests
         public override float GetConfidence() { return 0.0f; }
         public override void Reset() {}
         public override string GetCharsetName() { return null; }
+        public override int GetCodePage() { return -1; }
         public override ProbingState HandleData(byte[] buf, int offset, int len) 
         { 
             return ProbingState.Detecting; 

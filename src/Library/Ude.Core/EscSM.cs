@@ -101,7 +101,7 @@ namespace Ude.Core
                          BitPackage.SHIFT_MASK_4BITS, 
                          BitPackage.BIT_SHIFT_4BITS,
                          BitPackage.UNIT_MASK_4BITS, HZ_st),
-              HZCharLenTable, "HZ-GB-2312")
+              HZCharLenTable, "HZ-GB-2312", 52936)
         {
 
         }
@@ -167,7 +167,7 @@ namespace Ude.Core
                          BitPackage.SHIFT_MASK_4BITS, 
                          BitPackage.BIT_SHIFT_4BITS,
                          BitPackage.UNIT_MASK_4BITS, ISO2022CN_st),
-              ISO2022CNCharLenTable, "ISO-2022-CN")
+              ISO2022CNCharLenTable, "ISO-2022-CN", 50227)
         {
 
         }
@@ -234,7 +234,7 @@ namespace Ude.Core
                          BitPackage.SHIFT_MASK_4BITS, 
                          BitPackage.BIT_SHIFT_4BITS,
                          BitPackage.UNIT_MASK_4BITS, ISO2022JP_st),
-              ISO2022JPCharLenTable, "ISO-2022-JP")
+              ISO2022JPCharLenTable, "ISO-2022-JP", 50222)
         {
 
         }
@@ -298,7 +298,7 @@ namespace Ude.Core
                          BitPackage.SHIFT_MASK_4BITS, 
                          BitPackage.BIT_SHIFT_4BITS,
                          BitPackage.UNIT_MASK_4BITS, ISO2022KR_st),
-              ISO2022KRCharLenTable, "ISO-2022-KR")
+              ISO2022KRCharLenTable, "ISO-2022-KR", 50225)
         {
 
         }

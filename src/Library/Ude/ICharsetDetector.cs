@@ -47,7 +47,12 @@ namespace Ude
         /// The detected charset. It can be null.
         /// </summary>
         string Charset { get; }
-        
+
+        /// <summary>
+        /// The detected codepage. It can be -1.
+        /// </summary>
+        int CodePage { get; }
+
         /// <summary>
         /// The confidence of the detected charset, if any 
         /// </summary>

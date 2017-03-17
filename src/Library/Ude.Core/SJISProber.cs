@@ -65,7 +65,12 @@ namespace Ude.Core
         {
             return "Shift-JIS";        
         }
-        
+
+        public override int GetCodePage()
+        {
+            return 932;
+        }
+
         public override ProbingState HandleData(byte[] buf, int offset, int len)
         {
             int codingState;

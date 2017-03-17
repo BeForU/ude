@@ -90,7 +90,12 @@ namespace Ude.Core
         {
             return "EUC-TW";        
         }
-        
+
+        public override int GetCodePage()
+        {
+            return 51936;
+        }
+
         public override void Reset()
         {
             codingSM.Reset(); 

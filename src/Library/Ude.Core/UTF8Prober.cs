@@ -59,6 +59,11 @@ namespace Ude.Core
             return "UTF-8";
         }
 
+        public override int GetCodePage()
+        {
+            return 65001;
+        }
+
         public override void Reset()
         {
             codingSM.Reset();

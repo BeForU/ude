@@ -59,6 +59,12 @@ namespace Ude.Core
             get { return name;  }
         }
 
+        private int codePage;
+        public int CodePage
+        {
+            get { return codePage; }
+        }
+
         private int classFactor;
 
         public int ClassFactor {
@@ -66,13 +72,14 @@ namespace Ude.Core
         }
 
         public SMModel(BitPackage classTable, int classFactor,
-            BitPackage stateTable, int[] charLenTable, String name)
+            BitPackage stateTable, int[] charLenTable, String name, int codePage)
         {
             this.classTable = classTable;
             this.classFactor = classFactor;
             this.stateTable = stateTable;
             this.charLenTable = charLenTable;
             this.name = name;
+            this.codePage = codePage;
         }
         
         public int GetClass(byte b)
